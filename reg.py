@@ -3,7 +3,7 @@ from natsuko.base import ROLES
 
 regu = natsuko.NatsukoClient(
 			bot_name="Reg", 
-			token="MzcyNzQ0MzMwNjYzOTUyNDA0.DNIovQ.We2S0bAnXjP1WoAYjxRAvh5AK6k")
+			token="MzcyNzQ0MzMwNjYzOTUyNDA0.DNIovQ.We2S0bAnXjP1WoAYjxRAvh5AK6k") #This doesn't work
 
 regu.owners.append(217121568256557056) #That's me!
 regu.roles = {

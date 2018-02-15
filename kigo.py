@@ -13,13 +13,6 @@ import operator
 on = LOADER.CommandLoader("val_event", prefix="<3")
 
 
-on.command("resetcounter")
-async def resetcounter(event, client):
-    client.store["ship_counter"] = client.store.get("ship_counter", 0)
-    client.store["ship_counter"] = 0
-    await event.channel.send("I-it's not like I want to reset the counter because of you or anything.")
-
-
 @on.command("myotp")
 async def myotp(event, client):
     userA = event.user
@@ -33,7 +26,7 @@ async def myotp(event, client):
     await event.channel.send(f"```yaml\n{xx}```")
 
 
-on.command("ship")
+@on.command("ship")
 async def ship(event, client):
     """
     **ship** [userA] [userB/MiA Character]

@@ -3,3 +3,4 @@ characters
 modules
 *.store.*
 discord
+reg.running.py
