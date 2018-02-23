@@ -8,7 +8,25 @@ import io
 from PIL import Image
 import numpy as np
 import operator
+import math
 
+def polynomial(x):
+    """
+    Polynomial frecuency.
+    """
+    return (x - 20.0)*(x - 60.0)*(x - 81.0)*(x - 99.0)/((x - 100)*(x + 1))
+
+def stability(x):
+    """
+    Matching stability.
+    """
+    return ( math.cos( math.pi*polynomial(x) ) + 1 ) / 2
+
+def matching(a,b):
+    """
+    Matching between two users.
+    """
+    return (a + b) % 100
 
 on = LOADER.CommandLoader("val_event", prefix="<3")
 
@@ -64,7 +82,7 @@ async def ship(event, client):
         return await x.delete()
 
 
-    compatibility = int(str(userA.id + userB.id)[-2:]) + int(str(userA.id + userB.id)[5])
+    compatibility = int(100 * stability(matching(userA.id,userB.id)))
     a_name = "".join(z for z in userA.display_name.split(" ")[0] if str.isalnum(z))
     b_name = "".join(z for z in userB.display_name.split(" ")[0] if str.isalnum(z))
     ship_name = a_name[:int(len(a_name)/ 2)] + b_name[int(len(b_name)/ 2):]
