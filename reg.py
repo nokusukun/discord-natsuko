@@ -12,7 +12,7 @@ regu.roles = {
 	ROLES.SPECIAL:	["Cinnamon Bun"],
 	ROLES.EVERYONE:	["@everyone"]}
 
-regu.load_module_file("modules\\anime.py")
+#regu.load_module_file("modules\\anime.py")
 regu.load_module_file("kigo.py")
 regu.load_module_gist("https://gist.github.com/nokusukun/cf02d84f42965189fc9b1186f32f87e5")
 regu.run()
