@@ -16,7 +16,6 @@ colorama.init()
 
 
 class ModuleManager():
-    
 
     def __init__(self, natsuko):
         self.natsuko = natsuko
@@ -50,7 +49,7 @@ class ModuleManager():
         if event["type"] != options.cmdtype:
             return False
 
-        if options.event.message:
+        if options.event.message and options.cmdtype == "Command":
             if not options.event.message.content.startswith(module.prefix):
                 return False
 
@@ -90,13 +89,13 @@ class ModuleManager():
 
         for module in list(self.natsuko.modules.values()):
             for event in module.Events:
-                #print(event["type"])
+                print(event)
                 fl_res = await self.filter(event, options, module)
                 if not fl_res:
                     continue
-
+                print("Running!")
                 #print(f"Check Success, Executing Command.")
-                if options.event and event["type"] != "Message":
+                if options.event and options.cmdtype != "Message":
                     if options.event.channel is not None:
                         try:
                             print(f"Source: #{options.event.channel.name}({options.event.channel.id})")

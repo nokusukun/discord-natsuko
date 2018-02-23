@@ -240,8 +240,8 @@ class NatsukoClient(discord.Client):
                     store[attribute] = self.bot_store[str(attachable.id)]
 
             event.store = store
-            print("\n\nStore\n", store)
-            print("\n\nEvent\n", event)
+            #print("\n\nStore\n", store)
+            #print("\n\nEvent\n", event)
             await self.manager.execute(
                                 command=kwargs.get("command"),
                                 cmdtype=kwargs.get("cmdtype"),
