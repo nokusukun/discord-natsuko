@@ -26,7 +26,7 @@ def matching(a,b):
     """
     Matching between two users.
     """
-    return (a + b) % 100
+    return int(str(a + b)[-2:])
 
 on = LOADER.CommandLoader("val_event", prefix="<3")
 
@@ -39,7 +39,7 @@ async def myotp(event, client):
     otps = {}
     for member in event.guild.members:
         userB = member
-        otps[member.display_name] = int(str(userA.id + userB.id)[-2:]) + int(str(userA.id + userB.id)[5])
+        otps[member.display_name] = int(100 * stability(matching(userA.id,userB.id)))
     xx = "\n".join(f"{x}: {otps[x]}%" for x in sorted(otps, key=otps.get, reverse=True)[:20])
     await event.channel.send(f"```yaml\n{xx}```")
 
